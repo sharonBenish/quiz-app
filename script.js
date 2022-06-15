@@ -31,7 +31,6 @@ form.addEventListener("submit", (e)=>{
         return
     }
     user = username.value;
-    console.log(user);
     div.style.display ="none";
     spinner.style.display ="block";
     loadQuiz();
@@ -145,7 +144,6 @@ quiz.addEventListener("click", (e)=>{
 
 function updateAns(key){
     if (answers.some(x=> + x.q === currQuestion)){
-        console.log("yes");
         const idx = answers.findIndex(x => + x.q === currQuestion);
         answers[idx].a = + key.dataset.ans;
         answers[idx].id=key.id;
