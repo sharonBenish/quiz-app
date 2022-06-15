@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz App</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+   <div class="container">
+    <div id="name" class="app">
+        <img class="bana1" src="./images/bananas.png">
+        <img class="bic" src="./images/bicycle.png" alt="">
+        <img class="fruit" src="./images/orange.png" alt="">
+        <img class="lotus" src="./images/lotus-flower.png" alt="">
+        <img class="shoe" src="./images/sneakers.png" alt="">
+        <img class="plant" src="./images/succulent.png" alt="">
+        <div>
+            <h1><span>Q</span><span>U</span><span>I</span><span>Z</span> <span>G</span><span>A</span><span>M</span><span>E</span></h1>
+            <form action="">
+                <div>
+                    <label for="username">Enter your username</label>
+                    <input type="text" id="username" required>
+                </div>
+                <button id="play">Play Game</button>
+            </form>
+        </div>
+        <div id="spinner"><img src="./images/Spin-1s-200px.gif" alt=""></div>  
+    </div>
+
+    <div id="retry" class="app">
+        <div><img src="./images/confused.png" alt=""></div>
+        <h1 class="error-msg">oops, something went wrong</h1>
+        <button onclick="location.href='./index.html'">Try Again</button>
+    </div>
+
+    <div id="quiz-app" class="app">
+        <img class="bana1" src="./images/bananas.png">
+        <img class="bic" src="./images/bicycle.png" alt="">
+        <img class="fruit" src="./images/orange.png" alt="">
+        <img class="lotus" src="./images/lotus-flower.png" alt="">
+        <img class="shoe" src="./images/sneakers.png" alt="">
+        <img class="plant" src="./images/succulent.png" alt="">
+        <div class="progress-bar"><span class="progress"></span></div>
+        <div class="question-container">
+            <div class="question-num"><!--current question--></div>
+            <div class="question"><!--Question--></div>
+        </div>
+        <div class="divider"></div>
+        <div id="options"><!--Options--></div>
+
+        <button id="next">Next &gt;</button>
+        <button id="prev"> &lt; Previous </button>
+    </div>
+
+    <div id="result">
+        <div class="overlay"></div>
+        <div class="display-container">
+            <div class="congrats">
+                <h1 class="congrats_msg">Congrats Sharon !!!</h1>
+                <div class="score-msg">
+                    <div class="msg">You scored 6 out of 10 questions </div>
+                </div>
+                <div class="trophy"><img src="./images/trophy.png" alt=""></div>
+                <button class="replay" onClick="window.location.reload();">Play Again</button>
+            </div>
+            <div class="leaderboard">
+                <h2>HIGH SCORES</h2>
+                <div><!--highscores--></div>
+            </div>
+        </div>
+    </div>
+   </div>
+   <script src="./script.js"></script>
+</body>
+</html>

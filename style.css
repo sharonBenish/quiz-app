@@ -1,0 +1,710 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;500;600;700&family=Fredoka+One&family=Sen:wght@400;700;800&display=swap');
+:root{
+    --light-sea-green:#CFF7F1;
+    --dark-sea-green:#70E2DA;
+    --teal:#6DE2DA;
+    --khaki:#7A9598;
+    --yellow:#FE9A37;
+    --light-khaki:#DDE0D5;
+    --pale-sea-green:#F4FEFD;
+    --quiz-bg-color:#CEF7F0;
+    --blue:#004A7B;
+    --selected:#10D9DE;
+    font-size: 12px;
+}
+
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin:0;
+    font-family: 'Sen', sans-serif;
+   
+}
+
+body{
+    color:var(--blue);
+}
+
+.container{
+    width:100%;
+    min-height:100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: linear-gradient(var(--light-sea-green), var(--dark-sea-green), var(--teal)); 
+    overflow: hidden;
+}
+
+.app{
+    width:100%;
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--quiz-bg-color);
+    background-image: url("./images/unknown-1s-1084px\ \(1\).svg");
+    background-repeat: repeat;
+    min-height:100vh;
+    overflow: hidden;
+    padding:20px;
+}
+
+.app> img{
+    position: absolute;
+    width:80px;
+    height:80px;
+    object-fit: cover;
+}
+
+
+#name{
+    padding: 20px 0;
+    flex-direction: row;
+}
+
+#spinner{
+    display:none;
+}
+
+#spinner> img{
+    width:100px;
+    height:100px;
+}
+
+#name h1{
+    font-size: 3.5rem;
+    position:fixed;
+    width:100%;
+    text-align: center;
+    top:10%;
+    left:50%;
+    transform:translateX(-50%);
+}
+
+#name h1 span{
+    font-family: 'Fredoka One', cursive;
+    margin-left:5px;
+    animation: bounce 0.3s ease infinite alternate;
+    position: relative;
+}
+
+#name h1 span:nth-child(2) {
+    animation-delay: 0.2s;
+}
+#name h1 span:nth-child(3) {
+    animation-delay: 0.4s;
+}
+#name h1 span:nth-child(4) {
+    animation-delay: 0.6s;
+}
+#name h1 span:nth-child(5) {
+    animation-delay: 0.8s;
+}
+#name h1 span:nth-child(6) {
+    animation-delay: 1s;
+}
+#name h1 span:nth-child(7) {
+    animation-delay: 1.2s;
+}
+#name h1 span:nth-child(8) {
+    animation-delay: 1.4s;
+}
+
+@keyframes bounce {
+    100% {
+      top: -8px;
+    }
+}
+
+#name form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding:20px;
+}
+
+#name form> div> *{
+    width:100%;
+    margin:10px 0;
+    font-size: 1.2rem;
+    position: relative;
+    z-index: 100;
+}
+
+#name form label{
+    font-weight: 700;
+}
+
+#name form input{
+    border:0;
+    outline: 0;
+    padding:15px;
+    border-radius: 1rem;
+}
+
+#play{
+    padding:1rem 1.5rem;
+    border-radius: 1rem;
+    margin:30px;
+    transition: background-color 0.3s ease;
+}
+
+button{
+    border:none;
+    background-color: var(--blue);
+    color:#fff;
+}
+
+button:hover{
+    background-color: #11659d;
+}
+
+#play:hover{
+    animation: wobble 2s ease;
+}
+
+@keyframes wobble {
+    0% { transform: translateX(0%); }
+    15% { transform: translateX(-25%) rotate(-5deg); }
+    30% { transform: translateX(20%) rotate(3deg); }
+    45% { transform: translateX(-15%) rotate(-3deg); }
+    60% { transform: translateX(10%) rotate(2deg); }
+    75% { transform: translateX(-5%) rotate(-1deg); }
+    100% { transform: translateX(0%); }
+}
+
+#quiz-app{
+    position: relative;
+    display: none;
+}
+
+.bana1{
+    top:50%;
+    right:0;
+    transform: rotate(-20deg);
+    width:100px !important;
+    height: 100px !important;
+}
+
+.bic{
+    bottom:5%;
+    right:10%;
+    transform: rotate(30deg);
+    width:150px !important;
+    height: 150px !important;
+}
+
+.plant{
+    top:20%;
+    left:0;
+    transform: rotate(20deg);
+}
+
+.lotus{
+    bottom:15%;
+    left:20%;
+    width:50px !important;
+    height: 50px !important;
+}
+
+.shoe{
+    bottom:30%;
+    left:-2%;
+    transform: rotate(25deg);
+    width:100px !important;
+    height: 100px !important;
+}
+
+.fruit{
+    top:35%;
+    right:5%;
+    width:60px !important;
+    height: 60px !important;
+}
+
+#quiz-app.hide{
+    display: none !important;
+}
+
+.progress-bar{
+    width:100%;
+    height:1.2rem;
+    background-color: #9dded7;
+    position: absolute;
+    top:0;
+}
+
+.progress{
+    display: inline-block;
+    width:50%;
+    height:1.2rem;
+    background-color: var(--selected);
+}
+
+.question-container{
+    font-weight: 700;
+    width:70%;
+    font-size:1rem;
+    text-align: center;
+    margin-top: 15px;
+    position: relative;
+    z-index: 300;
+}
+
+.divider{
+    width:100%;
+    height:0.5rem;
+    background-color:#e1fcf8;
+    box-shadow: inset 0px 4px 7px -4px rgba(0,0,0,0.1);
+}
+
+.question{
+    padding:15px 0;
+    line-height: 1.5rem;
+}
+
+#options{
+    padding:20px 0;
+    padding-bottom: 60px;
+}
+
+.option{
+    margin:15px 0;
+    background-color: var(--pale-sea-green);
+    padding:1rem;
+    border-radius: 0.8rem;
+    min-width: 300px;
+    position: relative;
+    z-index: 1000;
+    box-shadow: 1px 1px 7px 0px rgb(58 59 70 / 9%);
+}
+
+.option span{
+    background-color: var(--quiz-bg-color);
+    display: inline-block;
+    padding: 4px 7px;
+    text-align: center;
+    border-radius: 50%;
+    margin-right:20px;
+}
+
+.option:hover, .option.selected{
+    background-color: var(--selected);
+    color:#fff;
+    cursor: pointer;
+}
+
+.option:hover span , .option.option.selected span{
+    background-color: var(--blue);
+    color:#fff;
+}
+
+#quiz-app button{
+    margin:0;
+    padding:0.7rem 1rem;
+   position: absolute;
+    bottom:2rem;
+    transition:background-color 0.2s ease;
+    border-radius: 0.5rem;
+}
+
+#next{
+    right:1rem;
+}
+
+#next.submit{
+    background-color: var(--selected);
+}
+
+#next.submit:hover{
+    background-color: var(--teal);
+}
+
+#prev{
+    left: 1rem;
+    display: none;
+}
+
+#result{
+    padding:30px;
+    position: relative;
+    min-height: 100vh;
+    width:100%;
+    background-color: var(--quiz-bg-color);
+    background-image: url("./images/unknown-1s-1084px\ \(1\).svg");
+    background-repeat: repeat;
+    display: none;
+}
+
+.display-container{
+    font-size: 1.2rem;
+    height: 100%;
+    pointer-events: auto; 
+}
+
+.congrats h1{
+    font-size: 2.5rem;
+    margin:0.6rem 0;
+}
+
+.score-msg > div:last-child{
+    margin:1rem 0;
+}
+
+.congrats .score{
+    display: flex;
+    width:60px;
+    height: 60px;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    background-color: #004A7B;
+    color:#fff;
+    border-radius: 50%;
+    margin: 0 auto;
+}
+
+.trophy{
+    width:100px;
+    height:100px;
+    margin: 0 auto;
+}
+
+.trophy img{
+    width:100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.replay{
+    border:none;
+    color: #fff;
+    background-color: var(--blue);
+    padding: 0.7rem 1rem;
+    margin:15px 0;
+    border-radius: 0.5rem;
+}
+
+.replay:hover{
+    animation: wobble 2s ease
+}
+
+.leaderboard{
+    background-color: var(--pale-sea-green);
+    min-height:300px;
+    border-radius: 0.6rem;
+    overflow: hidden;
+    box-shadow: 1px 1px 7px 0px rgba(58, 59, 70, 0.234);
+}
+
+.leaderboard h2{
+    padding:15px;
+    text-align: center;
+    background-color: var(--selected);
+    color:#fff;
+}
+
+.leaderboard > div>div{
+    padding:15px;
+    display: flex;
+    border-bottom:1px solid var(--blue);
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 700;
+}
+
+.leaderboard > div > div:hover{
+    background-color: var(--blue);
+    color:#fff;
+    cursor: pointer;
+}
+
+.leaderboard >div >div:hover .index{
+    color:var(--blue);
+}
+
+.index{
+    margin-right:15px;
+    display: inline-block;
+    background-color: var(--quiz-bg-color);
+    padding:0.5rem 0.8rem;
+    border-radius: 50%;
+}
+
+.leaderboard .score{
+    font-size: 1.5rem;
+}
+
+.overlay{
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left:0;
+    right:0;
+    background-image: url("./images/animation_500_l4bfxa8p.gif");
+    pointer-events: none; 
+}
+
+.congrats{
+    background-color: transparent;
+    color:var(--blue);
+    padding:30px;
+    text-align: center;
+}
+
+#retry{
+    display: none;
+}
+
+.error-msg{
+    font-family: 'Fredoka One', cursive;
+    text-align: center;
+}
+
+#retry button{
+    border:0;
+    padding:0.8rem 1.2rem;
+    margin:15px 0;
+    background-color: var(--yellow);
+    color:#fff;
+    border-radius: 0.5rem;
+    animation: wobble 2s ease infinite;
+}
+
+#retry button:hover{
+    animation: none;
+    background-color:#ea9e51 ;
+}
+
+@media (min-width:576px){
+    :root{
+        font-size: 16px;
+    }
+
+    .app{
+        width:90%;
+        height:auto;
+        min-height:500px;
+        box-shadow: 11px 14px 16px 1px rgba(72,203,197,1);
+        border-radius: 0.6rem;
+    }
+
+    #name h1{
+        font-size: 3rem;
+        position:absolute;
+        width:100%;
+        text-align: center;
+    }
+    
+    .fruit{
+        top:30%;
+        right:8%;
+        width:60px !important;
+        height: 60px !important;
+    }
+    
+
+    #name h1{
+        top:30px;
+    }
+
+    #result{
+        min-height:500px;
+        width:90%;
+        box-shadow: 11px 14px 16px 1px rgba(72,203,197,1);
+    }
+
+    .question-container{
+        width:50%;
+        margin-top:50px;
+    }
+
+    #options{
+        padding-bottom: 100px;
+    }
+    
+    .option{
+        min-width: 350px;
+    }
+    
+
+}
+
+@media (min-width:930px){
+    .display-container{
+        width:100%;
+        display: flex;
+    }
+
+    .display-container>div{
+        flex:1;
+    }
+    .leaderboard{
+        width:50%;
+        min-height: 400px;
+    }
+    .trophy{
+        width:200px;
+        height:200px ;
+    }
+    .option{
+        min-width: 500px;
+    }
+
+    #spinner> img{
+        width:150px;
+        height:150px;
+    }
+}
+
+@media (min-width:1200px){
+    .app >img{
+        position: absolute;
+        width:150px;
+        height:150px;
+        object-fit: cover;
+    }
+    
+    .bana1{
+        top:22%;
+        right:3%;
+        width: 160px !important;
+        height:160px !important;
+        transform: rotate(-50deg);
+    }
+    
+    .bic{
+        bottom:5%;
+        right:10%;
+        transform: rotate(30deg);
+        width: 250px !important;
+        height: 200px !important;
+    }
+    
+    .plant{
+        top:15%;
+        left:5%;
+        transform: rotate(20deg);
+    }
+    
+    .lotus{
+        bottom:9%;
+        left:25%;
+        width: 60px !important;
+        height: 60px !important;
+    }
+    
+    .shoe{
+        bottom:20%;
+        left:-2%;
+        transform: rotate(25deg);
+        width: 170px !important;
+        height:170px !important;
+    }
+    
+    .fruit{
+        top:28%;
+        right:23%;
+        width: 80px !important;
+        height:80px !important;
+    }
+}
+
+@media (min-width:2000px){
+    :root{
+        font-size: 20px;
+    }
+    .app{
+        width:70%;
+        min-height:800px;
+    }
+
+    .bana1{
+        top:22%;
+        right:3%;
+        width: 200px !important;
+        height:200px !important;
+        transform: rotate(-50deg);
+    }
+    
+    .bic{
+        bottom:5%;
+        right:10%;
+        transform: rotate(30deg);
+        width: 320px !important;
+        height: 320px !important;
+    }
+    
+    .plant{
+        top:10%;
+        left:5%;
+        transform: rotate(20deg);
+        width: 230px !important;
+        height: 230px !important;
+    }
+    
+    .lotus{
+        bottom:9%;
+        left:25%;
+        width: 80px !important;
+        height: 80px !important;
+    }
+    
+    .shoe{
+        bottom:20%;
+        left:-2%;
+        transform: rotate(25deg);
+        width: 250px !important;
+        height:250px !important;
+    }
+    
+    .fruit{
+        top:25%;
+        right:23%;
+        width: 120px !important;
+        height:120px !important;
+    }
+
+    .option{
+        margin:30px 0;
+        background-color: var(--pale-sea-green);
+        padding:1.2rem;
+        padding-right: 1.5rem;
+        border-radius: 0.8rem;
+        min-width: 600px;
+        font-size: 1.2rem;
+    }
+
+    .option span{
+        padding: 7px 12px;
+    }
+
+    button{
+        padding:1.2rem 1.5rem;
+        font-size: 1rem;
+    }
+
+    #result{
+        min-height:800px;
+        width:70%;
+        box-shadow: 11px 14px 16px 1px rgba(72,203,197,1);
+    }
+
+    .trophy{
+        width:350px;
+        height:350px;
+        margin: 30px auto;
+    }
+
+    .display-container{
+        width:100%;
+        display: flex;
+        align-items: center;
+    }
+
+    .leaderboard{
+        width:50%;
+        min-height: 500px;
+    }
+}
