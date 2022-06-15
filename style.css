@@ -47,7 +47,6 @@ body{
     background-repeat: repeat;
     min-height:100vh;
     overflow: hidden;
-    padding:20px;
 }
 
 .app> img{
@@ -59,7 +58,7 @@ body{
 
 
 #name{
-    padding: 20px 0;
+    padding: 20px;
     flex-direction: row;
 }
 
